@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import tokens from '../tokens/designTokens'
+import { ReactComponent as IconPlaceholder } from '../icons/IconPlaceholder.svg'
 
 type ButtonType = 'primary' | 'secondary' | 'error' | 'success'
 type Size = 'sm' | 'md' | 'lg'
@@ -13,6 +14,8 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** force visual state for demo */
   forceState?: ForcedState
   selected?: boolean
+  leftIcon?: React.ReactNode
+  rightIcon?: React.ReactNode
 }
 
 const sizePx = (s: Size) => `${tokens.button.sizes[s]}px`
@@ -101,6 +104,8 @@ export default function ButtonSolid({
   size = 'md',
   forceState,
   selected,
+  leftIcon,
+  rightIcon,
   ...rest
 }: Props) {
   return (
@@ -112,7 +117,9 @@ export default function ButtonSolid({
       aria-pressed={selected}
       {...rest}
     >
+      {leftIcon ? <span style={{ display: 'inline-flex', marginRight: 8 }}>{leftIcon}</span> : null}
       {label}
+      {rightIcon ? <span style={{ display: 'inline-flex', marginLeft: 8 }}>{rightIcon}</span> : null}
     </StyledButton>
   )
 }

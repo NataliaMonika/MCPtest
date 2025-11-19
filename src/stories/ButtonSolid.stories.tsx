@@ -61,13 +61,13 @@ export const AllVariants: Story = {
                     <ButtonSolid label={t} type={t} size={size} />
                   </div>
                   <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                    <ButtonSolid label={t} type={t} size={size} forceState="hover" />
+                    <ButtonSolid label={t} type={t} size={size} forceState="hover" leftIcon={<span style={{display:'inline-flex', color:'inherit'}}>&#9733;</span>} />
                   </div>
                   <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                    <ButtonSolid label={t} type={t} size={size} forceState="active" />
+                    <ButtonSolid label={t} type={t} size={size} forceState="active" rightIcon={<span style={{display:'inline-flex', color:'inherit'}}>&#9654;</span>} />
                   </div>
                   <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                    <ButtonSolid label={t} type={t} size={size} forceState="selected" selected />
+                    <ButtonSolid label={t} type={t} size={size} forceState="selected" selected leftIcon={<span style={{display:'inline-flex', color:'inherit'}}>&#10003;</span>} />
                   </div>
                   <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                     <ButtonSolid label={t} type={t} size={size} disabled />

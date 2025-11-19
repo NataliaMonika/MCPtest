@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import ButtonSolid from './components/ButtonSolid'
+import IconPlus from './icons/IconPlus'
+import IconSearch from './icons/IconSearch'
+import IconChevron from './icons/IconChevron'
 import tokens from './tokens/designTokens'
 
 const TYPES = ['primary', 'secondary', 'error', 'success'] as const
@@ -10,6 +13,8 @@ export default function App() {
   const [demoState, setDemoState] = useState<'default' | 'hover' | 'active' | 'selected'>('default')
   const [demoType, setDemoType] = useState<typeof TYPES[number]>('primary')
   const [demoSize, setDemoSize] = useState<typeof SIZES[number]>('md')
+  const [leftIcon, setLeftIcon] = useState(false)
+  const [rightIcon, setRightIcon] = useState(false)
 
   return (
     <div style={{ padding: 24, fontFamily: 'Inter, system-ui, sans-serif', color: '#0f172a' }}>
@@ -103,11 +108,27 @@ export default function App() {
         </div>
 
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          <ButtonSolid label="Demo" type={demoType} size={demoSize} forceState={demoState === 'default' ? undefined : (demoState as any)} selected={demoState === 'selected'} />
+          <ButtonSolid
+            label="Demo"
+            type={demoType}
+            size={demoSize}
+            forceState={demoState === 'default' ? undefined : (demoState as any)}
+            selected={demoState === 'selected'}
+            leftIcon={leftIcon ? <IconSearch /> : undefined}
+            rightIcon={rightIcon ? <IconChevron /> : undefined}
+          />
           <div style={{ color: '#334155' }}>
             <div>Tip: set <code>forceState</code> to preview hover/active/selected visually.</div>
             <div>aria-pressed is set when selected.</div>
           </div>
+        </div>
+        <div style={{ marginTop: 12, display: 'flex', gap: 12, alignItems: 'center' }}>
+          <label style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <input type="checkbox" checked={leftIcon} onChange={(e) => setLeftIcon(e.target.checked)} /> Left icon
+          </label>
+          <label style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <input type="checkbox" checked={rightIcon} onChange={(e) => setRightIcon(e.target.checked)} /> Right icon
+          </label>
         </div>
       </section>
     </div>
